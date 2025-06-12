@@ -2,16 +2,19 @@ import kotlin.random.Random
 
 fun main() {
 
-    val winnigNumbers = List(3) { Random.nextInt(0,43) }.distinct().take(3)
+    val numberRageStart = 0
+    val numberRangeEnd = 42
+    val numberToGuess = 3
+    val winnigNumbers = List(numberToGuess) { Random.nextInt(numberRageStart,numberRangeEnd) }.distinct().take(numberToGuess)
     val userNumbers = mutableListOf<Int>()
 
     println("Угадайте числа от 0 до 42.")
 
-    repeat(3) { index ->
+    repeat(numberToGuess) { index ->
         println("Введите число ${index + 1}: ")
         val input = readLine()?.toIntOrNull()
 
-        if (input == null || input !in 0..42) {
+        if (input == null || input !in numberRageStart..numberRangeEnd) {
             println("Ошибка введите корректное число в диапазоне от 0 до 42!")
             return
         }
